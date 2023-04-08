@@ -1,0 +1,11 @@
+In spring boot, I learned about:
+    1. How tomcat is embedded in spring boot application. It can be turned off using spring.main.web-application-type=none.
+    2. @SpringBootApplication annotation is a combination of @Configuration, @EnableAutoConfiguration and @ComponentScan.
+    3. @EnableAutoConfiguration annotation is used to enable Spring Boot’s auto-configuration mechanism. It tells Spring Boot to start adding beans based on classpath settings, other beans, and various property settings.
+    4. @ComponentScan annotation is used to tell Spring to look for other components, configurations, and services in the hello package, allowing it to find the controllers.
+    5. @RestController annotation is used to create RESTful web services. It is a convenience annotation that does nothing more than adding the @Controller and @ResponseBody annotations.
+    6. @RequestMapping annotation is used to map web requests to Spring Controller methods.
+    7. @RequestBody annotation is used to bind the HTTP request body with a domain object in method parameter or return type.
+    8. record is a handy class in Java 14. It is a compact way to create a class with getters, setters, equals, hashCode, and toString methods.
+    9. @SequenceGenerator annotation is used to generate a sequence of numbers.
+    10. @GeneratedValue annotation is used to specify the primary key generation strategy
