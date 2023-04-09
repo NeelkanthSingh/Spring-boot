@@ -9,3 +9,9 @@ In spring boot, I learned about:
     8. record is a handy class in Java 14. It is a compact way to create a class with getters, setters, equals, hashCode, and toString methods.
     9. @SequenceGenerator annotation is used to generate a sequence of numbers.
     10. @GeneratedValue annotation is used to specify the primary key generation strategy
+
+    I also learned about:
+        1. The package name should be in lower case with no underscores, hyphens, or spaces.
+        2. How @Component(value = "myBean") annotation is used to create a bean with the name myBean, it comes in handy when you want to create multiple beans of the same type.
+        3. How @Qualifier annotation is used to resolve the conflict when multiple beans of the same type are available in the Spring container.
+        4. How @Primary annotation is used to tell Spring to use this bean when multiple candidates are available. This is useful when you have multiple implementations of the same interface and you want to use one of them as the primary bean.
