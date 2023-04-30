@@ -1,17 +1,71 @@
 In spring boot, I learned about:
-    1. How tomcat is embedded in spring boot application. It can be turned off using spring.main.web-application-type=none.
-    2. @SpringBootApplication annotation is a combination of @Configuration, @EnableAutoConfiguration and @ComponentScan.
-    3. @EnableAutoConfiguration annotation is used to enable Spring Boot’s auto-configuration mechanism. It tells Spring Boot to start adding beans based on classpath settings, other beans, and various property settings.
-    4. @ComponentScan annotation is used to tell Spring to look for other components, configurations, and services in the hello package, allowing it to find the controllers.
-    5. @RestController annotation is used to create RESTful web services. It is a convenience annotation that does nothing more than adding the @Controller and @ResponseBody annotations.
-    6. @RequestMapping annotation is used to map web requests to Spring Controller methods.
-    7. @RequestBody annotation is used to bind the HTTP request body with a domain object in method parameter or return type.
-    8. record is a handy class in Java 14. It is a compact way to create a class with getters, setters, equals, hashCode, and toString methods.
-    9. @SequenceGenerator annotation is used to generate a sequence of numbers.
-    10. @GeneratedValue annotation is used to specify the primary key generation strategy
+    1. How Tomcat is embedded in Spring Boot application?
+    Spring Boot is built on top of the Spring framework and it includes an embedded Tomcat server by default,
+    which allows developers to run Spring Boot applications as standalone applications.
+    The embedded Tomcat server can be turned off using the following configuration property: spring.main.web-application-type=none.
 
-    I also learned about:
-        1. The package name should be in lower case with no underscores, hyphens, or spaces.
-        2. How @Component(value = "myBean") annotation is used to create a bean with the name myBean, it comes in handy when you want to create multiple beans of the same type.
-        3. How @Qualifier annotation is used to resolve the conflict when multiple beans of the same type are available in the Spring container.
-        4. How @Primary annotation is used to tell Spring to use this bean when multiple candidates are available. This is useful when you have multiple implementations of the same interface and you want to use one of them as the primary bean.
+    2. @SpringBootApplication annotation
+    The @SpringBootApplication annotation is a combination of three annotations:
+    @Configuration, @EnableAutoConfiguration, and @ComponentScan.
+    It is a convenient way to enable the most commonly used Spring Boot features in a single annotation.
+
+    3. @Configuration annotation
+    The @Configuration annotation is used to indicate that a class declares one or more @Bean methods,
+    which can be processed by the Spring container to generate bean definitions and service requests for those beans at runtime.
+    This annotation is typically used in conjunction with other Spring annotations such as @Component and @Service.
+
+    4. @EnableAutoConfiguration annotation
+    The @EnableAutoConfiguration annotation is used to enable Spring Boot's auto-configuration mechanism,
+    which automatically configures beans based on the classpath settings, other beans, and various property settings.
+    This annotation helps to reduce boilerplate code and allows developers to focus on writing business logic.
+
+    5. @ComponentScan annotation
+    The @ComponentScan annotation is used to tell Spring to scan for other components, configurations, and services
+    in the specified package(s), allowing it to find the controllers.
+    This annotation is typically used in conjunction with other annotations such as @Controller and @Service.
+
+    6. @RestController annotation
+    The @RestController annotation is used to create RESTful web services in Spring Boot.
+    It is a convenience annotation that combines the functionality of both @Controller and @ResponseBody annotations.
+
+    7. @RequestMapping annotation
+    The @RequestMapping annotation is used to map web requests to Spring Controller methods.
+    It can be used to specify the HTTP method, URL path, and other request parameters for a method.
+
+    8. @RequestBody annotation
+    The @RequestBody annotation is used to bind the HTTP request body with a domain object in a method parameter or return type.
+    It is typically used in conjunction with the @PostMapping and @PutMapping annotations.
+
+    9. record in Java 14
+    A record is a new class introduced in Java 14 that provides a concise way to create a class with getters,
+    setters, equals, hashCode, and toString methods.
+    It is a compact alternative to traditional Java classes and can be used to represent data objects.
+
+    10. @SequenceGenerator annotation
+    The @SequenceGenerator annotation is used to generate a sequence of numbers for a primary key column in a database table.
+    It is typically used in conjunction with the @GeneratedValue annotation.
+
+    11. @GeneratedValue annotation
+    The @GeneratedValue annotation is used to specify the primary key generation strategy for an entity in JPA (Java Persistence API).
+    It can be used with different strategies such as AUTO, IDENTITY, and SEQUENCE.
+
+I also learned about:
+    1. In Java, it is a convention to use a package name in lowercase letters and without any underscores, hyphens, or spaces.
+       Following this convention helps to avoid naming conflicts and makes it easier for other developers to read and understand
+       your code.
+
+    2. The @Component annotation is used to mark a Java class as a bean so that it can be managed by the Spring container.
+       The value attribute of the annotation can be used to specify a name for the bean. For example,
+       @Component(value = "myBean") creates a bean with the name "myBean". This is useful when you want to create multiple
+       beans of the same type and need to differentiate them based on their names.
+
+    3. The @Qualifier annotation is used to resolve the conflict when multiple beans of the same type are available in the
+       Spring container. For example, suppose you have two beans of type "Person", named "personA" and "personB".
+       You can use the @Qualifier annotation to specify which bean to use in a specific situation. For example,
+       @Autowired @Qualifier("personA") Person person; would inject the "personA" bean into the "person" variable.
+
+    4. The @Primary annotation is used to tell Spring which bean to use when multiple candidates are available.
+       This is useful when you have multiple implementations of the same interface and want to use one of them as the primary bean.
+       For example, suppose you have two beans of type "DataSource", named "dataSourceA" and "dataSourceB".
+       You can use the @Primary annotation to specify that "dataSourceA" should be the primary bean. For example, @Primary @Bean
+       public DataSource dataSourceA() { ... } would create a bean with the name "dataSourceA" and mark it as the primary bean.
