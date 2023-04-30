@@ -9,20 +9,23 @@ In spring boot, I learned about:
     @Configuration, @EnableAutoConfiguration, and @ComponentScan.
     It is a convenient way to enable the most commonly used Spring Boot features in a single annotation.
 
-    3. @Configuration annotation
-    The @Configuration annotation is used to indicate that a class declares one or more @Bean methods,
-    which can be processed by the Spring container to generate bean definitions and service requests for those beans at runtime.
-    This annotation is typically used in conjunction with other Spring annotations such as @Component and @Service.
+    3. @EnableAutoConfiguration:
+    EnableAutoConfiguration is an annotation that tells Spring Boot to automatically configure the application based on the
+    dependencies that are present on the classpath. It scans the classpath for libraries and frameworks and configures them
+    automatically so that the application can use them without any additional configuration. This annotation is usually added
+    to the main class of the application.
 
-    4. @EnableAutoConfiguration annotation
-    The @EnableAutoConfiguration annotation is used to enable Spring Boot's auto-configuration mechanism,
-    which automatically configures beans based on the classpath settings, other beans, and various property settings.
-    This annotation helps to reduce boilerplate code and allows developers to focus on writing business logic.
+    4. @Configuration:
+    The Configuration annotation is used to define a configuration class that provides configuration for the application.
+    Configuration classes contain methods that create beans and configure them. These methods are annotated with @Bean,
+    which tells Spring that the method should be used to create a bean. Configuration classes can be used to configure
+    third-party libraries or to create custom beans that the application needs.
 
-    5. @ComponentScan annotation
-    The @ComponentScan annotation is used to tell Spring to scan for other components, configurations, and services
-    in the specified package(s), allowing it to find the controllers.
-    This annotation is typically used in conjunction with other annotations such as @Controller and @Service.
+    5. @ComponentScan:
+    ComponentScan is an annotation that tells Spring to scan the package and its sub-packages for classes that are annotated
+    with Spring annotations, such as @Component, @Service, @Repository, or @Controller. These classes are automatically
+    registered as beans in the Spring application context, which makes them available for use throughout the application.
+    ComponentScan is usually added to the main class of the application.
 
     6. @RestController annotation
     The @RestController annotation is used to create RESTful web services in Spring Boot.
