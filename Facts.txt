@@ -52,12 +52,16 @@ In spring boot, I learned about:
     The @GeneratedValue annotation is used to specify the primary key generation strategy for an entity in JPA (Java Persistence API).
     It can be used with different strategies such as AUTO, IDENTITY, and SEQUENCE.
 
+    12. @Controller annotation
+    It creates a bean which is typically used to handle HTTP requests in a Spring MVC application.
+
 I also learned about:
     1. In Java, it is a convention to use a package name in lowercase letters and without any underscores, hyphens, or spaces.
        Following this convention helps to avoid naming conflicts and makes it easier for other developers to read and understand
        your code.
 
     2. The @Component annotation is used to mark a Java class as a bean so that it can be managed by the Spring container.
+       It creates a bean which is singleton by default.
        The value attribute of the annotation can be used to specify a name for the bean. For example,
        @Component(value = "myBean") creates a bean with the name "myBean". This is useful when you want to create multiple
        beans of the same type and need to differentiate them based on their names.
@@ -72,3 +76,9 @@ I also learned about:
        For example, suppose you have two beans of type "DataSource", named "dataSourceA" and "dataSourceB".
        You can use the @Primary annotation to specify that "dataSourceA" should be the primary bean. For example, @Primary @Bean
        public DataSource dataSourceA() { ... } would create a bean with the name "dataSourceA" and mark it as the primary bean.
+
+    5. @Bean annotation
+       The @Bean annotation is used to mark a method as a bean definition method. It is typically used in conjunction with
+       the @Configuration annotation to create beans in a Spring application context. For example, @Configuration @Bean
+       public DataSource dataSource() { ... } would create a bean with the name "dataSource" and return it from the method.
+       It will instantiate the method.
