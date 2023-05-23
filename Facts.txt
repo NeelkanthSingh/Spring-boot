@@ -81,4 +81,33 @@ I also learned about:
        The @Bean annotation is used to mark a method as a bean definition method. It is typically used in conjunction with
        the @Configuration annotation to create beans in a Spring application context. For example, @Configuration @Bean
        public DataSource dataSource() { ... } would create a bean with the name "dataSource" and return it from the method.
-       It will instantiate the method.
+       It will instantiate the method. @Bean with a class already defined gives that class/interface a new definition.
+
+    6. CommandLineRunner interface
+       The CommandLineRunner interface is used to run code after the Spring application context has been initialized.
+       It is typically used to perform some initialization tasks such as loading data from a database or setting up a cache.
+       For example, @Component public class MyRunner implements CommandLineRunner { ... } would create a bean with the name
+       "myRunner" and run the code in the run() method after the application context has been initialized.
+
+    7. Jackson library
+       The Jackson library is used to convert Java objects into JSON and vice versa. It converts Java objects with the help
+       of getters. Two handy annotations are @JsonIgnore and @JsonProperty. @JsonIgnore is used to ignore a field when converting
+       an object to JSON. @JsonProperty is used to specify the name of a field when converting an object to JSON also
+       @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) is used to specify that a field should be only to send it from
+       the client and not to read from the client.
+
+    8. POST vs PUT
+       The POST method is used to create a new resource on the server. The PUT method is used to update an existing resource
+       on the server. PUT is idempotent, which means that if you send the same request multiple times, it will have the same
+       effect as sending it once. POST is not idempotent, which means that if you send the same request multiple times,
+       it will have different effects each time.
+
+    9. APIs
+       Naming conventions for REST APIs are important because they make it easier for developers to understand how to use them.
+       Examples of good naming conventions are: api/v1/users, api/v2/users, api/v1/users/{id}. Versioning is important because
+       it allows you to make changes to your API without breaking existing clients. For example, if you change the response
+       format from XML to JSON, you can still support clients that expect XML responses by adding a new version of the API
+       that returns JSON responses. This way, you can support both XML and JSON responses without breaking existing clients.
+       After versioning there usually is the model name, then the id of the model, then the action.
+
+
