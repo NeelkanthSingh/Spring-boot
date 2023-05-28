@@ -108,6 +108,52 @@ I also learned about:
        it allows you to make changes to your API without breaking existing clients. For example, if you change the response
        format from XML to JSON, you can still support clients that expect XML responses by adding a new version of the API
        that returns JSON responses. This way, you can support both XML and JSON responses without breaking existing clients.
-       After versioning there usually is the model name, then the id of the model, then the action.
+       After versioning there usually is the model name, then the id of the model, then the action. Generally people prefer
+       to @Deprecated the old version of the API and create a new one.
 
+    10. Server side validations
+        To perform server-side validation, you can use the @Valid annotation on a method parameter or return type. In the POJO
+        class add @NotBlank above any field which is mandatory, can also add message attribute inside it. This comes from spring-boot-starter-validation. @Email is
+        another useful annotation. @Size(min = 2, max = 100) is used to specify the minimum and maximum length of a string.
 
+    11. Exception handling
+        One way to handle exceptions in Spring Boot is to add these lines inside application.properties:
+        server.error.include-message=always
+        server.error.include-binding-errors=always
+        server.error.include-stacktrace=always
+        Another way is to create a class that extends RuntimeException and add @ResponseStatus(HttpStatus.NOT_FOUND) above it.
+        Another way is to create an ApiRequestException that throws exception, ApiException that the client sees and
+        ApiExceptionHandler which handles all the exception. Inside ApiExceptionHandler add @ControllerAdvice and handle
+        all the Exceptions using @ExceptionHandler.
+
+    12. data.sql and schema.sql
+        data.sql is used to insert data into the database. schema.sql is used to create the tables in the database.
+        Both of these files are executed automatically when the application starts up, they are stored in the resources folder.
+
+    13. Configure to a database.
+        Add @Entity and @Table(name = "table_name") above the class. Add @Id and @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    14. OpenFeign
+        OpenFeign is a declarative web service client. It is used to make HTTP requests to other services in a Spring Boot application.
+
+    15. Logging
+        Spring boot uses Logback by default. To log inside a class, add
+        private static final Logger LOGGER = LoggerFactory.getLogger(ClassName.class); Then use LOGGER.info("message"); or
+        LOGGER.error("message"); or LOGGER.warn("message"); or LOGGER.debug("message"); or LOGGER.trace("message");
+        In application.properties certain things can be set like logging.file.name=application.log or
+        logging.logback.rollingpolicy.file-name-pattern=application-%d{yyyy-MM-dd}.log.gz or logging.level.root=INFO
+
+    16. Metrics
+        Spring Boot Actuator is a sub-project of Spring Boot that adds several production-ready features to your Spring Boot
+        application. One of these features is metrics. Metrics are used to monitor the health of your application. For example,
+        you can use metrics to monitor the number of requests per second or the average response time of your application.
+        To enable metrics, you need to add the following dependency to your pom.xml file:
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        Then you can access the metrics at /actuator/metrics/{metricName}.
+        Add these in application.properties:
+        info.app.name=Spring Boot Actuator
+        management.endpoint.health.show-details=always
+        management.endpoints.web.exposure.include=*
