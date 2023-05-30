@@ -157,3 +157,51 @@ I also learned about:
         info.app.name=Spring Boot Actuator
         management.endpoint.health.show-details=always
         management.endpoints.web.exposure.include=*
+
+    17. Prometheus
+        Prometheus is a monitoring system that collects metrics from your application and stores them in a time series database.
+        It can be used to monitor the health of your application and alert you when something goes wrong. To use Prometheus,
+        you need to add the following dependency to your pom.xml file:
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
+        </dependency>
+        Then you can access the metrics at /actuator/prometheus.
+        Add these in application.properties:
+        management.endpoints.web.exposure.include=health,info,prometheus
+
+    18. Configuration Processor
+        The Configuration Processor is a tool that generates configuration files for your application. To use the
+        Configuration Processor, you need to add the following dependency to your pom.xml file:
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+        Then you can create a class annotate it with @ConfigurationProperties(prefix = "app"), create fields and add
+        @Configuratation above it. Then add the properties in application.properties like app.name=Spring Boot App
+
+    19. Testing
+        In Spring Boot, you can use the @SpringBootTest annotation to test your application. This annotation loads the
+        application context and injects all the beans into your test class. It does the integration testing. To do the
+        unit tests. we can create Test class with before each method and after each method. We can inject repository using
+        @DataJpaTest and @Autowired. @Test is used to test the method. Assertions are used to check the result of the method.
+
+    20. Lombok
+        Lombok is a library that helps you write less code. It does this by generating code for you. For example, if you
+        have a class with a lot of fields, you can use Lombok to generate getters and setters for all the fields. To use
+        Lombok, you need to add the following dependency to your pom.xml file:
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        Then you can use the @Getter and @Setter annotations to generate getters and setters for your fields.
+        Some examples of lombok annotations are @ToString, @EqualsAndHashCode, @NoArgsConstructor, @AllArgsConstructor,
+        @Slf4j, @Data
+
+    21. Records vs Lombok
+        Records are immutable, Lombok is mutable. Records are final, Lombok is not final. Records are serializable,
+        Lombok is not serializable.
+
+
+
